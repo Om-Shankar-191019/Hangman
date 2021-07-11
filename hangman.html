@@ -84,16 +84,9 @@
         // const A_btn = document.getElementById("A");
         const abcd_buttons = document.querySelectorAll(".abcd-btn");
         const next_btn = document.querySelector(".next");
+        const answer_btn = document.querySelector(".answer");
         const question = document.querySelector(".question");
-        question.textContent = generateQuestion("OMSHANKAR");
-
-        // A_btn.addEventListener("click",() =>{
-        //     user_input = "A";
-        //     check_input_validity(user_input);
-            // update_all
-        //     question.textContent = Q_status_display;
-        //     chance.textContent = "Chances left : " + chances_left;
-        // });
+        question.textContent = "Welcome"
 
         abcd_buttons.forEach(function(element){
             element.addEventListener("click",function (e){
@@ -184,6 +177,8 @@
             Q_status = string_to_list_convertor(current_Q);
             Q_status_display = current_Q;
             chances_left = initial_chance;
+            answer_btn.removeEventListener("click",show_answer);
+            answer_btn.style.opacity=0.5;
             // update_all
             question.textContent = current_Q;
             chance.textContent = "Total chances : " + chances_left;
@@ -265,18 +260,22 @@
             }
             if(flag==0)
             {
-                if(chances_left>0)
+                if(chances_left>1)
                 {
                     chances_left--;
                 }
                 else{
-                    chances_left = "Answer button enabled"
+                    chances_left = "Answer button enabled";
+                    answer_btn.addEventListener("click",show_answer);
+                    answer_btn.style.opacity=1;
                 }
             }
             Q_status_display = list_to_string_convertor(Q_status);
         }
 
-        
+        function show_answer(){
+            console.log(list_to_string_convertor(answer_list));
+        }
         
         
 
