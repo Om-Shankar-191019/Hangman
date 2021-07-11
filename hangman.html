@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman_movie</title>
+    <link rel='stylesheet' href='G:\working\website development\font-awesome-icon-local\fontawesome-free-5.15.3-web\fontawesome-free-5.15.3-web\css\all.min.css'>
+    <link rel='stylesheet' href='hang.css'>
+
+</head>
+<body>
+    
+    <div class="main-container">
+        <div class='chance-container'>
+            <h2 class='chance'>Total you have 8 chances to guess</h2>
+        </div>
+        <div class='question-container'>
+            <h1 class='question'></h1>
+        </div>
+        <div class="abcd-container">
+            <div class='abcd-divs'>
+                <button class='abcd-btn' id='A'>A</button>
+                <button class='abcd-btn'>B</button>
+                <button class='abcd-btn'>C</button>
+                <button class='abcd-btn'>D</button>
+                <button class='abcd-btn'>E</button>
+                <button class='abcd-btn'>F</button>
+                <button class='abcd-btn'>G</button>
+            </div>
+            <div class='abcd-divs'>
+                <button class='abcd-btn'>H</button>
+                <button class='abcd-btn'>I</button>
+                <button class='abcd-btn'>J</button>
+                <button class='abcd-btn'>K</button>
+                <button class='abcd-btn'>L</button>
+                <button class='abcd-btn'>M</button>
+                <button class='abcd-btn'>N</button>
+            </div>
+            <div class='abcd-divs'>
+                <button class='abcd-btn'>O</button>
+                <button class='abcd-btn'>P</button>
+                <button class='abcd-btn'>Q</button>
+                <button class='abcd-btn'>R</button>
+                <button class='abcd-btn'>S</button>
+                <button class='abcd-btn'>T</button>
+                <button class='abcd-btn'>U</button>
+            </div>
+            <div class='abcd-divs'>
+                <button class='abcd-btn'>V</button>
+                <button class='abcd-btn'>W</button>
+                <button class='abcd-btn'>X</button>
+                <button class='abcd-btn'>Y</button>
+                <button class='abcd-btn'>Z</button>
+            </div>
+        </div>
+        <div class='answer-container'></div>
+        <div class="button-container">
+            <button class='btn answer'>answer</button>
+            <button class='btn next'>next</button>
+        </div>
+    </div>
+
+    <script>
+
+        
+
+        var movies = ["DON","JOLLYLLB","RUSTAM","BHARAT","SWARG"];
+        var fruits = ["MANGO","APPLE"];
+        var months = ["JANUARY","FEBRUARY"];
+        var current_category = movies;
+        var Q_sequence_bag = [];
+        var Q_sequence_bag_capacity = current_category.length;
+        var current_Q = "";
+        var user_input = "";
+        var current_Q_index;
+        var Q_status = [];
+        var Q_status_display = "";
+        var initial_chance = 8;
+        var chances_left = initial_chance;
+        var answer_list = [];
+        //element selector 
+        const chance = document.querySelector(".chance");
+        const A_btn = document.getElementById("A");
+        const next_btn = document.querySelector(".next");
+        const question = document.querySelector(".question");
+        question.textContent = generateQuestion("OMSHANKAR");
+
+        A_btn.addEventListener("click",() =>{
+            user_input = "A";
+            check_input_validity(user_input);
+            // update_all
+            question.textContent = Q_status_display;
+            chance.textContent = "Chances left : " + chances_left;
+        });
+
+        
+        next_btn.addEventListener("click",() =>{
+            let index;
+            if(Q_sequence_bag.length == Q_sequence_bag_capacity)
+            {
+                Q_sequence_bag.splice(0);
+                index = getRandomNumber(0,current_category.length-1);
+                Q_sequence_bag.push(index);
+            }
+            else
+            {
+                while(true)
+                {
+                    index = getRandomNumber(0,current_category.length-1);
+                    if(Q_sequence_bag.indexOf(index)==-1)
+                        {
+                            Q_sequence_bag.push(index);
+                            break;
+                        }
+                }  
+            }
+            current_Q = generateQuestion(current_category[index]);
+            current_Q_index = index;
+            answer_list = string_to_list_convertor(current_category[index]);
+            Q_status = string_to_list_convertor(current_Q);
+            Q_status_display = current_Q;
+            chances_left = initial_chance;
+            // update_all
+            question.textContent = current_Q;
+            chance.textContent = "Total chances : " + chances_left;
+        });
+
+        //getrandomNumber -- gives random number between two number both inclusive.
+        function getRandomNumber(min,max){
+            return (Math.floor((Math.random()*(max-min+1))+min));
+        }
+
+        // randommList -- giver list of n random number between zero to given range.
+        function randomList(how_many,between_zero_and){
+            if(how_many > between_zero_and)
+            {
+                how_many = between_zero_and+1 ;
+            }
+            let l = [];
+            while(l.length!=how_many)
+            {
+                let rn = getRandomNumber(0,between_zero_and);
+                while(l.indexOf(rn)==-1)
+                    l.push(rn);
+            }
+            return l;
+        }
+        // generateQuestion convert any string passed to fill in the blanks type. eg...mohan = m_h_an
+        function generateQuestion(str){
+            let len = str.length;
+            let total_space = getRandomNumber(Math.floor(len/2),Math.floor(len/2+1));
+            let space_list = randomList(total_space,len-1);
+            let question_array = [];
+            for(let i=0;i<len;i++)  //convert str to list
+            {
+                question_array.push(str[i]);
+            }
+            for(let i=0;i<question_array.length;i++)  // making fill in the blanks
+            {
+                question_array[space_list[i]] = "-";
+            }
+            let question_str = "";
+            for(let i=0;i<question_array.length;i++) // convert list to str question
+            {
+                question_str += question_array[i];
+            }
+            
+            return question_str;
+        }
+
+        function string_to_list_convertor(str){
+            let list = [];
+            for(let i=0;i<str.length;i++)
+            {
+                list.push(str[i]);
+            }
+            return list;
+        }
+        function list_to_string_convertor(list){
+            let str = "";
+            for(let i=0;i<list.length;i++)
+            {
+                str += list[i];
+            }
+            return str;
+        }
+
+        function check_input_validity(user_input){
+            let flag = 0;
+            let i;
+            for(i=0;i<answer_list.length;i++)
+            {
+                if(Q_status[i]=="-")
+                {
+                    if(answer_list[i] == user_input)
+                    {
+                        Q_status[i] = user_input;
+                        flag = 1;
+                    }
+                }
+            }
+            if(flag==0)
+            {
+                if(chances_left>0)
+                {
+                    chances_left--;
+                }
+                else{
+                    chances_left = "Answer button enabled"
+                }
+            }
+            Q_status_display = list_to_string_convertor(Q_status);
+        }
+
+        
+        
+        
+
+    </script>
+</body>
+</html>
