@@ -56,6 +56,9 @@ p{
 .chance-container{
     margin-bottom:var(--margin-bottom);
 }
+.chance span{
+    color:rgb(4, 153, 4);
+}
 .question-container{
     /* border:2px solid green; */
     display:inline-block;
@@ -79,6 +82,7 @@ p{
     margin-bottom:0.6rem;
     display:flex;
     justify-content: center;
+    /* position:relative; */
 }
 .abcd-btn{
     height:2.5rem;
@@ -89,9 +93,10 @@ p{
     /* border:none; */
 }
 .button-container{
-    /* border:2px solid blue; */
+    /* border-bottom:1px solid blue; */
     margin:0 auto;
-    width:30%;
+    width:50%;
+    position:relative;
 }
 .btn{
     
@@ -99,8 +104,31 @@ p{
     padding:5px 10px;
     cursor:pointer;
     margin:0 5px;
+    margin-bottom: var(--margin-bottom);
     /* border:none; */
 }
 .answer{
     opacity:0.5;
+}
+.answer-box{
+    padding:10px 15px;
+    border:black;
+    box-shadow: var(--box-shadow);
+    background:white;
+    height:0%;
+    width:auto;
+    position:absolute;
+    left:34%;
+    transform: translateY(-50%);
+    top:0%;
+    z-index: -1;
+    visibility:none;
+    transition:all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+.pop-up-answer{
+    top:150%;
+    width:auto;
+    height:100%;
+    z-index: 1;
+    visibility:visible;
 }

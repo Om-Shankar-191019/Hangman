@@ -13,7 +13,7 @@
     
     <div class="main-container">
         <div class='chance-container'>
-            <h2 class='chance'>Total you have 8 chances to guess</h2>
+            <h2 class='chance'>Press <span>next</span> button to start the game</h2>
         </div>
         <div class='question-container'>
             <h1 class='question'></h1>
@@ -58,7 +58,11 @@
         <div class="button-container">
             <button class='btn answer'>answer</button>
             <button class='btn next'>next</button>
+            <div class='answer-box'>
+                <h3 class='answer-box-h3'></h3>
+            </div>
         </div>
+        
     </div>
 
     <script>
@@ -85,8 +89,11 @@
         const abcd_buttons = document.querySelectorAll(".abcd-btn");
         const next_btn = document.querySelector(".next");
         const answer_btn = document.querySelector(".answer");
+        const answer_box = document.querySelector(".answer-box");
+        const answer_box_h3 = document.querySelector(".answer-box-h3");
         const question = document.querySelector(".question");
         question.textContent = "Welcome"
+
 
         abcd_buttons.forEach(function(element){
             element.addEventListener("click",function (e){
@@ -178,6 +185,8 @@
             Q_status_display = current_Q;
             chances_left = initial_chance;
             answer_btn.removeEventListener("click",show_answer);
+            if(answer_box.classList.contains("pop-up-answer"))
+                answer_box.classList.remove("pop-up-answer");
             answer_btn.style.opacity=0.5;
             // update_all
             question.textContent = current_Q;
@@ -270,11 +279,19 @@
                     answer_btn.style.opacity=1;
                 }
             }
+
             Q_status_display = list_to_string_convertor(Q_status);
+            
+            if(list_to_string_convertor(answer_list)==Q_status_display)
+            {
+                answer_btn.addEventListener("click",show_answer);
+                answer_btn.style.opacity=1;  
+            }
         }
 
         function show_answer(){
-            console.log(list_to_string_convertor(answer_list));
+            answer_box.classList.toggle("pop-up-answer");
+            answer_box_h3.textContent=list_to_string_convertor(answer_list);
         }
         
         
