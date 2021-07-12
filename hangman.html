@@ -37,12 +37,12 @@
             
             <div class='category-box'>
                 <ul class='category-list'>
-                    <li class='item'>Hindi Movies</li>
-                    <li class='item'>Web Series</li>
-                    <li class='item'>Months Name</li>
-                    <li class='item'>Fruits</li>
-                    <li class='item'>Animals</li>
-                    <li class='item'>General Items</li>
+                    <li class='item '>Hindi Movies</li>
+                    <li class='item '>Web Series</li>
+                    <li class='item '>Months Name</li>
+                    <li class='item '>Fruits</li>
+                    <li class='item '>Animals</li>
+                    <li class='item '>General Items</li>
                     <p>more to come...</p>
                 </ul>
             </div>
@@ -99,8 +99,14 @@
         
 
         var movies = ["DON","JOLLYLLB","RUSTAM","BHARAT","SWARG"];
+        
         var fruits = ["MANGO","APPLE"];
         var months = ["JANUARY","FEBRUARY"];
+        var web_series = ["MIRJAPUR","PANCHAYAT"];
+        var general_items = ["CAR","WATCH","PEN"];
+        var animals = ["COW","HORSE","LION","TIGER"];
+        var category = [movies,web_series,months,fruits,animals,general_items];
+        
         var current_category = movies;
         var Q_sequence_bag = [];
         var Q_sequence_bag_capacity = current_category.length;
@@ -123,12 +129,44 @@
         const question = document.querySelector(".question");
         const how_to_box = document.querySelector(".how-to-box");
         const how_to_play_btn = document.querySelector(".how-to-play-btn");
-        question.textContent = "Welcome"
+        const category_box = document.querySelector(".category-box");
+        const select_category_btn = document.querySelector(".select-category-btn");
+        const category_items = document.querySelectorAll(".item");
 
+        question.textContent = "Welcome"
+        select_category_btn.addEventListener("click",() => {
+            category_box.classList.toggle("pop-up-category-box");
+        });
         how_to_play_btn.addEventListener("click",() => {
             how_to_box.classList.toggle("pop-up-how-to-box");
         });
         
+        category_items.forEach(function(ele,index){
+            ele.addEventListener("click",function(){
+                current_category = category[index];
+                Q_sequence_bag_capacity = current_category.length; 
+                Q_sequence_bag.splice(0);
+                category_box.classList.remove("pop-up-category-box");
+            });
+        });
+
+        // category_items.forEach(function(ele){
+        //     ele.addEventListener("click",function(em){
+        //         const li_specific = em.currentTarget.classList;  
+        //         if(li_specific.contains("movies"))
+        //             current_category = movies;     
+        //         else if(li_specific.contains("web_series"))
+        //             current_category = web_series; 
+        //         else if(li_specific.contains("months"))
+        //             current_category = months; 
+        //         else if(li_specific.contains("fruits"))
+        //             current_category = fruits; 
+        //         else if(li_specific.contains("animals"))
+        //             current_category = animals; 
+        //         else if(li_specific.contains("general_items"))
+        //             current_category = general_items;          
+        //     });
+        // });
         abcd_buttons.forEach(function(element){
             element.addEventListener("click",function (e){
                 const ele_specific = e.currentTarget.classList;
@@ -223,6 +261,8 @@
                 answer_box.classList.remove("pop-up-answer");
             if(how_to_box.classList.contains("pop-up-how-to-box"))
                 how_to_box.classList.remove("pop-up-how-to-box");
+            if(category_box.classList.contains("pop-up-category-box"))
+                category_box.classList.remove("pop-up-category-box");
             answer_btn.style.opacity=0.5;
             // update_all
             question.textContent = current_Q;
