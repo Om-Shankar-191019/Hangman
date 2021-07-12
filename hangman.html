@@ -18,6 +18,35 @@
         <div class='question-container'>
             <h1 class='question'></h1>
         </div>
+        <div class="three-features">
+            <h4 class='how-to-play-btn'>how to play</h4>
+            <div class="how-to-box">
+                <p class='how-to-play'>This game is all about gussing and identifying the word.A word with some blank
+                    spaces will be displayed on the board and a player has to fill those blanks within the available
+                    chances.If chances gets over then only answer button will be enabled.To start the game , just Press
+                    next button.A player has choice to choose the category for given words like months,movies,web series
+                    or any as per given option.It can be selected at category button at right side.By default the 
+                    word category is set as movie name.
+                </p>
+            </div>
+            <!-- <div class='correct-box'>
+                <h3 class='correct'>Correct</h3>
+            </div> -->
+
+            <h4 class='select-category-btn'>select category</h4>
+            
+            <div class='category-box'>
+                <ul class='category-list'>
+                    <li class='item'>Hindi Movies</li>
+                    <li class='item'>Web Series</li>
+                    <li class='item'>Months Name</li>
+                    <li class='item'>Fruits</li>
+                    <li class='item'>Animals</li>
+                    <li class='item'>General Items</li>
+                    <p>more to come...</p>
+                </ul>
+            </div>
+        </div>
         <div class="abcd-container">
             <div class='abcd-divs'>
                 <button class='abcd-btn A'>A</button>
@@ -92,9 +121,14 @@
         const answer_box = document.querySelector(".answer-box");
         const answer_box_h3 = document.querySelector(".answer-box-h3");
         const question = document.querySelector(".question");
+        const how_to_box = document.querySelector(".how-to-box");
+        const how_to_play_btn = document.querySelector(".how-to-play-btn");
         question.textContent = "Welcome"
 
-
+        how_to_play_btn.addEventListener("click",() => {
+            how_to_box.classList.toggle("pop-up-how-to-box");
+        });
+        
         abcd_buttons.forEach(function(element){
             element.addEventListener("click",function (e){
                 const ele_specific = e.currentTarget.classList;
@@ -187,6 +221,8 @@
             answer_btn.removeEventListener("click",show_answer);
             if(answer_box.classList.contains("pop-up-answer"))
                 answer_box.classList.remove("pop-up-answer");
+            if(how_to_box.classList.contains("pop-up-how-to-box"))
+                how_to_box.classList.remove("pop-up-how-to-box");
             answer_btn.style.opacity=0.5;
             // update_all
             question.textContent = current_Q;
