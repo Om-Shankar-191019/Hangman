@@ -63,10 +63,32 @@ p{
     /* border:2px solid green; */
     display:inline-block;
     padding:10px;
+    position:relative;
     /* margin-bottom:var(--margin-bottom); */
 }
 .question{
     letter-spacing: 0.8rem;
+}
+.correct-box{
+    padding:10px 15px;
+    border:black;
+    box-shadow: var(--box-shadow);
+    background:white;
+    height:0%;
+    width:auto;
+    position:absolute;
+    left:34%;
+    transform: translateY(-50%);
+    top:0%;
+    z-index: -1;
+    visibility:none;
+    transition:all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+.pop-up-correct-box{
+    top:120%;
+    height:80%;
+    z-index: 1;
+    visibility:visible;
 }
 
 .three-features{
@@ -89,10 +111,6 @@ p{
 }
 .how-to-play{
     color:black;
-}
-.correct-box{
-    border:1px solid green;
-    /* display:none; */
 }
 
 .how-to-box{
@@ -152,7 +170,7 @@ p{
     z-index: 1;
     opacity:1;
 }
- 
+
 .abcd-container{
     /* border:2px solid blue; */
     padding:10px;

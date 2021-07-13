@@ -17,6 +17,9 @@
         </div>
         <div class='question-container'>
             <h1 class='question'></h1>
+            <div class='correct-box'>
+                <h3 class='correct-box-h3'>correct</h3>
+            </div>
         </div>
         <div class="three-features">
             <h4 class='how-to-play-btn'>how to play</h4>
@@ -130,6 +133,7 @@
         const select_category_btn = document.querySelector(".select-category-btn");
         const category_items = document.querySelectorAll(".item");
         const default_category = document.querySelector(".default-category");
+        const correct_box = document.querySelector(".correct-box");
 
         question.textContent = "Welcome"
         select_category_btn.addEventListener("click",() => {
@@ -262,6 +266,8 @@
                 how_to_box.classList.remove("pop-up-how-to-box");
             if(category_box.classList.contains("pop-up-category-box"))
                 category_box.classList.remove("pop-up-category-box");
+            if(correct_box.classList.contains("pop-up-correct-box"))
+                correct_box.classList.remove("pop-up-correct-box");
             answer_btn.style.opacity=0.5;
             // update_all
             question.textContent = current_Q;
@@ -360,7 +366,8 @@
             if(list_to_string_convertor(answer_list)==Q_status_display)
             {
                 answer_btn.addEventListener("click",show_answer);
-                answer_btn.style.opacity=1;  
+                answer_btn.style.opacity=1;
+                correct_box.classList.add("pop-up-correct-box");  
             }
         }
 
