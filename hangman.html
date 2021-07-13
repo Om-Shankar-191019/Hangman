@@ -29,10 +29,8 @@
                     word category is set as movie name.
                 </p>
             </div>
-            <!-- <div class='correct-box'>
-                <h3 class='correct'>Correct</h3>
-            </div> -->
-
+            
+            <h5 class='default-category'>Default category : Hindi movies</h5>
             <h4 class='select-category-btn'>select category</h4>
             
             <div class='category-box'>
@@ -106,7 +104,7 @@
         var general_items = ["CAR","WATCH","PEN"];
         var animals = ["COW","HORSE","LION","TIGER"];
         var category = [movies,web_series,months,fruits,animals,general_items];
-        
+        var default_category_list = ["Hindi movies","Web series","Months","Fruits","Animals","General items"];
         var current_category = movies;
         var Q_sequence_bag = [];
         var Q_sequence_bag_capacity = current_category.length;
@@ -120,7 +118,6 @@
         var answer_list = [];
         //element selector 
         const chance = document.querySelector(".chance");
-        // const A_btn = document.getElementById("A");
         const abcd_buttons = document.querySelectorAll(".abcd-btn");
         const next_btn = document.querySelector(".next");
         const answer_btn = document.querySelector(".answer");
@@ -132,6 +129,7 @@
         const category_box = document.querySelector(".category-box");
         const select_category_btn = document.querySelector(".select-category-btn");
         const category_items = document.querySelectorAll(".item");
+        const default_category = document.querySelector(".default-category");
 
         question.textContent = "Welcome"
         select_category_btn.addEventListener("click",() => {
@@ -147,6 +145,7 @@
                 Q_sequence_bag_capacity = current_category.length; 
                 Q_sequence_bag.splice(0);
                 category_box.classList.remove("pop-up-category-box");
+                default_category.textContent="Category selected : "+default_category_list[index];
             });
         });
 

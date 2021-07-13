@@ -75,6 +75,7 @@ p{
     margin:0 auto;
     display:flex;
     justify-content: space-between;
+    align-items: center;
     position:relative;
     /* padding:0.5rem; */
 }
@@ -144,7 +145,7 @@ p{
     overflow:hidden;
     opacity:0;
     z-index: -1;
-    transition:all 1s ease-in;
+    transition:all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 .pop-up-category-box{
     top:100%;
