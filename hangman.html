@@ -43,7 +43,7 @@
                     <li class='item '>Months Name</li>
                     <li class='item '>Fruits</li>
                     <li class='item '>Animals</li>
-                    <li class='item '>General Items</li>
+                    <li class='item '>Eatables</li>
                     <p>more to come...</p>
                 </ul>
             </div>
@@ -97,17 +97,14 @@
 
     <script>
 
-        
-
-        var movies = ["DON","JOLLYLLB","RUSTAM","BHARAT","SWARG"];
-        
-        var fruits = ["MANGO","APPLE"];
-        var months = ["JANUARY","FEBRUARY"];
-        var web_series = ["MIRJAPUR","PANCHAYAT"];
-        var general_items = ["CAR","WATCH","PEN"];
-        var animals = ["COW","HORSE","LION","TIGER"];
-        var category = [movies,web_series,months,fruits,animals,general_items];
-        var default_category_list = ["Hindi movies","Web series","Months","Fruits","Animals","General items"];
+        var movies = ["DANGAL","SULTAN","RUSTOM","AEDILHAIMUSHKIL","DISHOOM","MOHENJODARO","HAPPYBHAGJAYEGI","TIGERZINDAHAI","HINDIMEDIUM","RANGOON","MERIPYAARIBINDU","PADMAAVAT","SANJU","SIMMBA","KABIRSINGH","BHARAT","MISSIONMANGAL","TANHAJI","MALANG","CHHAPAAK","LOVEAAJKAL","THAPPAD","PANGA","DILBECHARA","SHAKUNTALADEVI","RADHE","DARBAAN","SURAJPEMANGALBHARI","GULABOSITABO","ANGREZIMEDIUM","CHHALAANG","LUDO","AIRLIFT"];
+        var fruits = ["MANGO","APPLE","BANANA","ORANGE","STRAWBERRY","GRAPE","WATERMELON","APRICOT","POMEGRANATE","PEAR","BLUEBERRY","PINEAPPLE","CHERRY","KIWIFRUIT","PAPAYA","GUAVA","RASPBERRY","BLACKBERRY","CUSTARDAPPLE"];
+        var months = ["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"];
+        var web_series = ["PAATALLOK","MADEINHEAVEN","PANCHAYAT","KOTAFACTORY","GULLAK","MIRZAPUR","INSIDEEDGE","SACREDGAMES","THEFAMILYMAN","DELHICRIME","CODEM","CRIMINALJUSTICE","RANGBAAZ","APHARAN","HOSTAGES","KAAFIR","GHOUL","MAHARANI","MASABAMASABA","BANDISHBANDITS","TVFTRIPLING","BHAUKAAL","SPECIALOPS","HOSTELDAZE"];
+        var eatables = ["TEA","COFFEE","BISCUIT","BREAD","BUTTER","PULSES","OIL","MILK","SALT","RICE","POTATO","PASTA","FRENCHFRIES","ICECREAM","FRIEDRICE","PANCAKES","BURGER","PIZZA","CAKE","CHHOLEBHATURE","SAMOSA","JALEBI","DHOKLA","BIRYANI","LADOO","MASALADOSA","PULAO","MALPUA","UPMA","SHAHIPANEER","BUTTERNAAN","ROTI","DAL","POHA","SALAD"];
+        var animals = ["COW","HORSE","LION","TIGER","DOG","CAT","BEAR","DEER","RABBIT","TURTLE","FISH","MOUSE","HAMSTER","SNAKE","BUFFALO","OX","FOX","DONKEY","ZEBRA","GIRAFFE","DINOSAUR","RHINOCEROS","CROCODILE"];
+        var category = [movies,web_series,months,fruits,animals,eatables];
+        var default_category_list = ["Hindi movies","Web series","Months","Fruits","Animals","Eatables"];
         var current_category = movies;
         var Q_sequence_bag = [];
         var Q_sequence_bag_capacity = current_category.length;
@@ -153,23 +150,6 @@
             });
         });
 
-        // category_items.forEach(function(ele){
-        //     ele.addEventListener("click",function(em){
-        //         const li_specific = em.currentTarget.classList;  
-        //         if(li_specific.contains("movies"))
-        //             current_category = movies;     
-        //         else if(li_specific.contains("web_series"))
-        //             current_category = web_series; 
-        //         else if(li_specific.contains("months"))
-        //             current_category = months; 
-        //         else if(li_specific.contains("fruits"))
-        //             current_category = fruits; 
-        //         else if(li_specific.contains("animals"))
-        //             current_category = animals; 
-        //         else if(li_specific.contains("general_items"))
-        //             current_category = general_items;          
-        //     });
-        // });
         abcd_buttons.forEach(function(element){
             element.addEventListener("click",function (e){
                 const ele_specific = e.currentTarget.classList;
@@ -297,7 +277,7 @@
         // generateQuestion convert any string passed to fill in the blanks type. eg...mohan = m_h_an
         function generateQuestion(str){
             let len = str.length;
-            let total_space = getRandomNumber(Math.floor(len/2),Math.floor(len/2+1));
+            let total_space = getRandomNumber(Math.floor(len/2),Math.floor(len/2-1));
             let space_list = randomList(total_space,len-1);
             let question_array = [];
             for(let i=0;i<len;i++)  //convert str to list
@@ -376,8 +356,6 @@
             answer_box_h3.textContent=list_to_string_convertor(answer_list);
         }
         
-        
-
     </script>
 </body>
 </html>
