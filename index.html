@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman_movie</title>
+    <!-- <link rel='stylesheet' href='G:\working\website development\font-awesome-icon-local\fontawesome-free-5.15.3-web\fontawesome-free-5.15.3-web\css\all.min.css'> -->
+    <link rel='stylesheet' href='style.css'>
+
+</head>
+<body>
+    
+    <div class="main-container">
+        <div class='chance-container'>
+            <h2 class='chance'>Press <span>next</span> button to start the game</h2>
+        </div>
+        <div class='question-container'>
+            <h1 class='question'></h1>
+            <div class='correct-box'>
+                <h3 class='correct-box-h3'>correct</h3>
+            </div>
+        </div>
+        <div class="three-features">
+            <h4 class='how-to-play-btn'>how to play</h4>
+            <div class="how-to-box">
+                <p class='how-to-play'>This game is all about gussing and identifying the word.A word with some blank
+                    spaces will be displayed on the board and a player has to fill those blanks within the available
+                    chances.If chances gets over then only answer button will be enabled.To start the game , just Press
+                    next button.A player has choice to choose the category for given words like months,movies,web series
+                    or any as per given option.It can be selected at category button at right side.By default the 
+                    word category is set as movie name.
+                </p>
+            </div>
+            
+            <h5 class='default-category'>Default category : Hindi movies</h5>
+            <h4 class='select-category-btn'>select category</h4>
+            
+            <div class='category-box'>
+                <ul class='category-list'>
+                    <li class='item '>Hindi Movies</li>
+                    <li class='item '>Web Series</li>
+                    <li class='item '>Months Name</li>
+                    <li class='item '>Fruits</li>
+                    <li class='item '>Animals</li>
+                    <li class='item '>Eatables</li>
+                    <p>more to come...</p>
+                </ul>
+            </div>
+        </div>
+        <div class="abcd-container">
+            <div class='abcd-divs'>
+                <button class='abcd-btn A'>A</button>
+                <button class='abcd-btn B'>B</button>
+                <button class='abcd-btn C'>C</button>
+                <button class='abcd-btn D'>D</button>
+                <button class='abcd-btn E'>E</button>
+                <button class='abcd-btn F'>F</button>
+                <button class='abcd-btn G'>G</button>
+            </div>
+            <div class='abcd-divs'>
+                <button class='abcd-btn H'>H</button>
+                <button class='abcd-btn I'>I</button>
+                <button class='abcd-btn J'>J</button>
+                <button class='abcd-btn K'>K</button>
+                <button class='abcd-btn L'>L</button>
+                <button class='abcd-btn M'>M</button>
+                <button class='abcd-btn N'>N</button>
+            </div>
+            <div class='abcd-divs'>
+                <button class='abcd-btn O'>O</button>
+                <button class='abcd-btn P'>P</button>
+                <button class='abcd-btn Q'>Q</button>
+                <button class='abcd-btn R'>R</button>
+                <button class='abcd-btn S'>S</button>
+                <button class='abcd-btn T'>T</button>
+                <button class='abcd-btn U'>U</button>
+            </div>
+            <div class='abcd-divs'>
+                <button class='abcd-btn V'>V</button>
+                <button class='abcd-btn W'>W</button>
+                <button class='abcd-btn X'>X</button>
+                <button class='abcd-btn Y'>Y</button>
+                <button class='abcd-btn Z'>Z</button>
+            </div>
+        </div>
+        <div class='answer-container'></div>
+        <div class="button-container">
+            <button class='btn answer'>answer</button>
+            <button class='btn next'>next</button>
+            <div class='answer-box'>
+                <h3 class='answer-box-h3'></h3>
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="script.js">
+
+    </script>
+</body>
+</html>

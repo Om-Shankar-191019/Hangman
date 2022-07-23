@@ -16,7 +16,7 @@ body{
     background-color: var(--main-bg);
     line-height: 1.5;
     color:gray;
-    background-image:url("nature (49).jpg");
+    background-image:url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTl8fG5hdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60");
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
